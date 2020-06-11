@@ -1,0 +1,38 @@
+<form>
+  <label for="fileSize">File Size (MB):</label>
+  <input type="number" id="fileSize" name="File Size"><br><br>
+  <label for="downloadSpeed">Download Speed (MB/S):</label>
+  <input type="number" id="downloadSpeed" name="Download Speed"><br><br>
+</form>
+
+
+<button id="submitValues">Calculate</button>
+
+
+<p id="timeToDownload"></p>
+
+
+
+<script>
+
+document.getElementById("submitValues").addEventListener("click", calculateDownloadSpeed);
+
+function calculateDownloadSpeed() {
+    // Identify the file size of the file being downloaded
+    let fileSize = document.querySelector("#fileSize").value;
+    // Identify the download speed of the file being downloaded
+    let mbSpeed = document.getElementById("downloadSpeed").value;
+
+    // Calculate how long it will take (in seconds)
+    let downloadLengthSeconds = fileSize / mbSpeed;
+
+    // Calculate how long it will take (in minutes)
+    let downloadLengthMinutes = (fileSize / mbSpeed) / 60;
+   
+
+    document.querySelector("#timeToDownload").innerHTML = "It will take " + downloadLengthSeconds + " seconds to download the file or " + downloadLengthMinutes + " minute/s.";
+
+}
+
+
+</script>
